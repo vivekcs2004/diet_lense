@@ -1,11 +1,12 @@
 from google import genai
 from google.genai import types
+from decouple import config
 
 # # pip install -U google-genai
 def generate_kerala_diet_plan(goal="weight loss",age =None,weight=None,gender="male",target_weight=None,duration=None):
     
     # Initialize the new Client
-    client = genai.Client(api_key="AIzaSyAkDHWmhbzpUYxyMEoQ6mGLnNSzVdHPTQc")
+    client = genai.Client(config("api_key"))
     
     # Extract user
    
