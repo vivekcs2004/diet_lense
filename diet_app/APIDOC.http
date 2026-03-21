@@ -3,10 +3,10 @@ POST http://127.0.0.1:8000/register/
 Content-Type: application/json
 
 {
-    "username":"java",
-    "email":"java@gmail.com",
+    "username":"v",
+    "email":"v@gmail.com",
     "password":"password@123",
-    "phone":1234567896
+    "phone":12345683811
     
 }
 
@@ -16,7 +16,7 @@ POST http://127.0.0.1:8000/token/
 Content-Type: application/json
 
 {
-    "username":"java@gmail.com",
+    "username":"v@gmail.com",
     "password":"password@123"
 }
 
@@ -24,40 +24,40 @@ Content-Type: application/json
 ###
 POST http://127.0.0.1:8000/profile/
 Content-Type: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 {
-    "height":190,
-    "weight":85,
-    "age":28,
-    "gender":"female"
+    "height":170,
+    "weight":65,
+    "age":22,
+    "gender":"male"
 }
 
 
 #profile retrieve
 ###
-GET http://127.0.0.1:8000/profile/3/
+GET http://127.0.0.1:8000/profile/5/
 Accept: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 #profile update
 ###
-PUT  http://127.0.0.1:8000/profile/1/update/
+PUT  http://127.0.0.1:8000/profile/5/update/
 Content-Type: application/json
-Authorization: Token 7dee5ca583bf29c4ebc748c110da5e4da3cc6c18
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 {
-    "height":180,
-    "weight":80,
-    "age":28,
+    "height":170,
+    "weight":62,
+    "age":22,
     "gender":"male"
 }
 
 #user details
 ###
-GET http://127.0.0.1:8000/user/4/
+GET http://127.0.0.1:8000/user/8/
 Accept: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 #===========FOODLOG==============
 
@@ -65,14 +65,14 @@ Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
 ###
 POST http://127.0.0.1:8000/foodlog/
 Content-Type: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 {
 
-    "name":"chapathi",
-    "meal_type":"dinner",
+    "name":"dosa",
+    "meal_type":"breakfast",
     "calories":300,
-    "serving_size":"5"
+    "serving_size":"2"
     
 }
 
@@ -81,13 +81,13 @@ Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
 ###
 GET http://127.0.0.1:8000/foodlog/
 Accept: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 #retrieve foodlog
 ###
-GET http://127.0.0.1:8000/foodlog/5/
+GET http://127.0.0.1:8000/foodlog/22/
 Accept: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 #update foodlog
 ###
@@ -117,13 +117,13 @@ Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
 ###
 GET http://127.0.0.1:8000/summary/
 Accept: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 #diet plan
 ###
 POST http://127.0.0.1:8000/diet-plan/
 Content-Type: application/json
-Authorization: Token 1391e7db4aa8872823793b339aa65ccafc440cb3
+Authorization: Token 08b7fec2c7810df9901b822f8cf5ca01b717556a
 
 {
 

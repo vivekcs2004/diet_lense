@@ -1,8 +1,9 @@
 
-
 import json
 from google import genai
 from google.genai import types
+
+from decouple import config
 
 def analyze_food(image):
   
@@ -12,13 +13,25 @@ def analyze_food(image):
 
     # 2. Initialize the New Client
     # Replace with your actual API key or use an environment variable
-    client = genai.Client(api_key="AIzaSyAkDHWmhbzpUYxyMEoQ6mGLnNSzVdHPTQc")
+    client = genai.Client(api_key=config('API_KEY'))
 
     # 3. Read image bytes
     image_bytes = food_image.read()
 
     # 4. Define the Prompt & Schema
-    prompt = "You are a nutrition expert. Identify the food in the image and estimate calories.get me response.txt with calorie_low, calorie_high, food name,and note as json."
+    prompt = """
+                Act as a professional Clinical Dietitian and Computer Vision expert. 
+                Analyze the attached image of food and provide a high-precision nutritional breakdown.
+
+                1. **Identification**: Identify the specific dish (e.g., "Chicken Mandi/Kuzhimanthi").
+                2. **Component Analysis**: Estimate the weight (in grams) for each individual element (Rice, Protein, Sauces).
+                3. **Caloric Range**: Provide a 'calorie_low' (standard portion) and 'calorie_high' (restaurant portion with hidden fats).
+                4. **Note**: Include a brief expert insight on the macronutrient profile.
+
+                Output the result strictly in JSON format with these keys: 
+                "food_name", "calorie_low", "calorie_high".
+
+             """
 
     try:
         # Using the new SDK's generate_content
@@ -35,14 +48,16 @@ def analyze_food(image):
                 system_instruction="You are a clinical nutritionist. Return ONLY JSON.",
                 response_mime_type="application/json",
                 # Explicit schema ensures the JSON structure is 100% consistent
-                response_schema={
+               response_schema={
                     "type": "OBJECT",
                     "properties": {
                         "food_name": {"type": "STRING"},
                         "average_calorie": {"type": "NUMBER"},
-                        # "calorie_high": {"type": "NUMBER"} # Changed to NUMBER for easier math later
+                        "meal_type": {"type": "STRING"},
+                        "serving_size": {"type": "STRING"},
+                        "notes": {"type": "STRING"}
                     },
-                    "required": ["food_name", "average_calorie"]
+                    "required": ["food_name", "average_calorie", "meal_type"]
                 }
             )
         )

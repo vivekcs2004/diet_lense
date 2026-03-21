@@ -177,7 +177,8 @@ class AnalyzeFoodImageView(APIView):
 
         data = analyze_food(image)
 
-        food_instance = FoodLog.objects.create(name=data.get("food_name"),calories=data.get("average_calorie"),owner=request.user)
+        food_instance = FoodLog.objects.create(name=data.get("food_name"),calories=data.get("average_calorie"),  meal_type=data.get("meal_type"),
+        serving_size=data.get("serving_size"),owner=request.user)
 
         serializer_instance = FoodLogSerializer(food_instance)
 

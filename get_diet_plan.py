@@ -6,7 +6,7 @@ from decouple import config
 def generate_kerala_diet_plan(goal="weight loss",age =None,weight=None,gender="male",target_weight=None,duration=None):
     
     # Initialize the new Client
-    client = genai.Client(api_key=config("GEMINI_API_KEY"))
+    client = genai.Client(api_key=config("API_KEY"))
     
     # Extract user
    
